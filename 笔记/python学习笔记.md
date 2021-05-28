@@ -23,6 +23,17 @@ set {'a',1,'b','hello'}
 dict {'a':1,'b':'hello'}
 list ['a',1,'b','hello']
 ```
+
+
+#### map()函数映射求两个列表相乘
+```python
+func = lambda x,y:x*y
+result = map(func,[1,2,3,4],[4,3,2,1])
+list_result = list(result)
+print(list_result)
+#运行结果
+[4, 6, 6, 4]
+```
 #### lambda表达式
 ```python
 a=lambda x,y:x+y
@@ -91,7 +102,9 @@ if__name__='__main__'
 - requests：HTTP库
 - selenium：用于Web应用程序测试的工具
 - bs4：爬虫助手
-- constant：提供了管理常量的广泛方法
+- PyAutoGUI：一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持
+- pyperclip：模块有 copy() 和 paste() 函数， 可以向计算机的剪贴板发送文本， 或从
+它接收文本。
 
 ### 字符串相关
 #### split()用法
@@ -187,7 +200,7 @@ datetime.datetime.fromtimestamp(1588176000.0)
 
 #### Python连接Oracleimport cx_Oracle
 
-```
+```python
 conn = cx_Oracle.connect('yb_ya/***@10.254.254.*:1521/yaybdb',encoding="UTF-8")
 cursor = conn.cursor()
 cursor.execute('select * from ac01 where rownum <= 5')
@@ -198,15 +211,33 @@ for row in result:
 cursor.close()
 conn.close()
 ————————————————
-原文链接：https://blog.csdn.net/weixin_42167016/article/details/80895796
+#原文链接：https://blog.csdn.net/weixin_42167016/article/details/80895796
 ```
 
 
 
 ### pandas
+#### DataFrame的创建
+```python
+pd.DataFrame(columns=['第一列','第二列','第三列'],index=[1,2,3],data={'第一列':[4,5,6],'第二列':3})
+#输出
+第一列  第二列  第三列
+1    4    3  NaN
+2    5    3  NaN
+3    6    3  NaN
+```
 #### [pandas dataframe的合并（append, merge, concat）](https://www.cnblogs.com/guxh/p/9451532.html)
 #### 
 #### pandas.read_csv()参数
+
+### ElementTree XML API
+```python
+import xml.etree.ElementTree as et
+tree = et.parse(tablepath)#将xml解析为树
+root = tree.getroot()#获取根节点
+rows = root.findall('.//{urn:schemas-microsoft-com:office:spreadsheet}Row')
+```
+#### [支持的Xpath语法](https://docs.python.org/zh-cn/3/library/xml.etree.elementtree.html#elementtree-xpath)
 
 
 ### selenium
@@ -260,7 +291,138 @@ iframe结构和细节
 2. 缩放截取到的页面图片，即将截图的size缩放为宽和高都除以缩放比例后的大小；
 3. 修改Image.crop的参数，将参数元组的四个值都乘以缩放比例。
 
+### pyautogui
+#### [更多操作](https://www.jb51.net/article/183926.htm)
+#### 基本操作
+```python
+import pyautogui
+ 
+pyautogui.PAUSE = 1 # 调用在执行动作后暂停的秒数，只能在执行一些pyautogui动作后才能使用，建议用time.sleep
+pyautogui.FAILSAFE = True # 启用自动防故障功能，左上角的坐标为（0，0），将鼠标移到屏幕的左上角，来抛出failSafeException异常
+ 
+# 判断(x,y)是否在屏幕上
+x, y = 122, 244
+pyautogui.onScreen(x, y) # 结果为true
+ 
+width, height = pyautogui.size() # 屏幕的宽度和高度
+print(width, height)
+```
+#### 鼠标常用操作
+```python
+import pyautogui
+ 
+currentMouseX, currentMouseY = pyautogui.position() # 鼠标当前位置
+print(currentMouseX, currentMouseY)
+ 
+# 控制鼠标移动,duration为持续时间
+for i in range(2):
+  pyautogui.moveTo(100, 100, duration=0.25) # 移动到 (100,100)
+  pyautogui.moveTo(200, 100, duration=0.25)
+  pyautogui.moveTo(200, 200, duration=0.25)
+  pyautogui.moveTo(100, 200, duration=0.25)
+ 
+for i in range(2):
+  pyautogui.moveRel(50, 0, duration=0.25) # 从当前位置右移100像素
+  pyautogui.moveRel(0, 50, duration=0.25) # 向下
+  pyautogui.moveRel(-50, 0, duration=0.25) # 向左
+  pyautogui.moveRel(0, -50, duration=0.25) # 向上
+ 
+# 按住鼠标左键，把鼠标拖拽到(100, 200)位置
+pyautogui.dragTo(100, 200, button='left')
+# 按住鼠标左键，用2秒钟把鼠标拖拽到(300, 400)位置
+pyautogui.dragTo(300, 400, 2, button='left')
+# 按住鼠标左键，用0.2秒钟把鼠标向上拖拽
+pyautogui.dragRel(0, -60, duration=0.2)
+ 
+# pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+# 其中，button属性可以设置成left，middle和right。
+pyautogui.click(10, 20, 2, 0.25, button='left')
+pyautogui.click(x=100, y=200, duration=2) # 先移动到(100, 200)再单击
+pyautogui.click() # 鼠标当前位置点击一下
+pyautogui.doubleClick() # 鼠标当前位置左击两下
+pyautogui.doubleClick(x=100, y=150, button="left") # 鼠标在（100，150）位置左击两下
+pyautogui.tripleClick() # 鼠标当前位置左击三下
+ 
+pyautogui.mouseDown() # 鼠标左键按下再松开
+pyautogui.mouseUp()
+pyautogui.mouseDown(button='right') # 按下鼠标右键
+pyautogui.mouseUp(button='right', x=100, y=200) # 移动到(100, 200)位置，然后松开鼠标右键
+ 
+# scroll函数控制鼠标滚轮的滚动，amount_to_scroll参数表示滚动的格数。正数则页面向上滚动，负数则向下滚动
+# pyautogui.scroll(clicks=amount_to_scroll, x=moveToX, y=moveToY)
+pyautogui.scroll(5, 20, 2)
+pyautogui.scroll(10) # 向上滚动10格
+pyautogui.scroll(-10) # 向下滚动10格
+pyautogui.scroll(10, x=100, y=100) # 移动到(100, 100)位置再向上滚动10格
+ 
+# 缓动/渐变函数可以改变光标移动过程的速度和方向。通常鼠标是匀速直线运动，这就是线性缓动/渐变函数。
+# PyAutoGUI有30种缓动/渐变函数，可以通过pyautogui.ease*?查看。
+# 开始很慢，不断加速
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInQuad)
+# 开始很快，不断减速
+pyautogui.moveTo(100, 100, 2, pyautogui.easeOutQuad)
+# 开始和结束都快，中间比较慢
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInOutQuad)
+# 一步一徘徊前进
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInBounce)
+# 徘徊幅度更大，甚至超过起点和终点
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInElastic)
 
 
+#获取鼠标位置
+import pyautogui
+ 
+print('Press Ctrl-C to quit.')
+try:
+  while True:
+    # Get and print the mouse coordinates.
+    x, y = pyautogui.position()
+    positionStr = 'X:' + str(x).rjust(4) + ' Y:' + str(y).rjust(4)
+    pix = pyautogui.screenshot().getpixel((x, y)) # 获取鼠标所在屏幕点的RGB颜色
+    positionStr += ' RGB:(' + str(pix[0]).rjust(3) + ',' + str(pix[1]).rjust(3) + ',' + str(pix[2]).rjust(3) + ')'
+    print(positionStr, end='') # end='' 替换了默认的换行
+    print('\b' * len(positionStr), end='', flush=True) # 连续退格键并刷新，删除之前打印的坐标，就像直接更新坐标效果
+except KeyboardInterrupt: # 处理 Ctrl-C 按键
+  print('\nDone.')
+```
+
+#### 键盘操作
+```python
+import pyautogui
+ 
+pyautogui.typewrite('Hello world!') # 输入Hello world!字符串
+pyautogui.typewrite('Hello world!', interval=0.25) # 每次输入间隔0.25秒，输入Hello world!
+ 
+pyautogui.press('enter') # 按下并松开（轻敲）回车键
+pyautogui.press(['left', 'left', 'left', 'left']) # 按下并松开（轻敲）四下左方向键
+pyautogui.keyDown('shift') # 按下`shift`键
+pyautogui.keyUp('shift') # 松开`shift`键
+ 
+pyautogui.keyDown('shift')
+pyautogui.press('4')
+pyautogui.keyUp('shift') # 输出 $ 符号的按键
+ 
+pyautogui.hotkey('ctrl', 'v') # 组合按键（Ctrl+V），粘贴功能，按下并松开'ctrl'和'v'按键
+ 
+# pyautogui.KEYBOARD_KEYS数组中就是press()，keyDown()，keyUp()和hotkey()函数可以输入的按键名称
+pyautogui.KEYBOARD_KEYS = ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.',
+              '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '<', '=', '>', '?', '@',
+              '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+              'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~',
+              'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace', 'browserback',
+              'browserfavorites', 'browserforward', 'browserhome', 'browserrefresh', 'browsersearch',
+              'browserstop', 'capslock', 'clear', 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal',
+              'del', 'delete', 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10',
+              'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20', 'f21', 'f22',
+              'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'final', 'fn', 'hanguel', 'hangul',
+              'hanja', 'help', 'home', 'insert', 'junja', 'kana', 'kanji', 'launchapp1', 'launchapp2',
+              'launchmail', 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack',
+              'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9',
+              'numlock', 'pagedown', 'pageup', 'pause', 'pgdn', 'pgup', 'playpause', 'prevtrack', 'print',
+              'printscreen', 'prntscrn', 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select',
+              'separator', 'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab',
+              'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen', 'command',
+              'option', 'optionleft', 'optionright']
+```
 
 
