@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 /**
  * @author 包福平
  * @QQ:1140913970
@@ -60,8 +58,8 @@ public class HttpTest {
 
     public static void main(String[] args) {
         String json1="{\"username\":\"airoucat\",\"password\":\"123\",\"hobby\":\"cpp\"}";
-        JSONObject jsonObject = JSONObject.fromObject(json1);
-        interfaceUtil("http://localhost:8080/test/hello", );
+        //JSONObject jsonObject = JSONObject.fromObject(json1);
+        interfaceUtil("http://localhost:8080/test/hello","username=airoucat");
 
     }
 }

@@ -8,8 +8,16 @@
     <servlet-name>HelloHttpServlet</servlet-name>
     <servlet-class>airoucat.controller.HelloHttpServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>generateTheToken</servlet-name>
+    <servlet-class>airoucat.controller.generateTheToken</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>HelloHttpServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>generateTheToken</servlet-name>
+    <url-pattern>/hello/generateTheToken</url-pattern>
   </servlet-mapping>
 </web-app>
