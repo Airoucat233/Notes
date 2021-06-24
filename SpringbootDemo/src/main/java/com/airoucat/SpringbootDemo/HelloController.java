@@ -1,4 +1,4 @@
-package com.airoucat.web;
+package com.airoucat.SpringbootDemo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

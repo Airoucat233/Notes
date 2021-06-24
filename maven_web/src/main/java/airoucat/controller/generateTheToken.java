@@ -22,5 +22,15 @@ public class generateTheToken extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println(req.getAttribute("requestTime"));
+        resp.setContentType("application/json; charset=UTF-8");
+        PrintWriter writer = resp.getWriter();
+        writer.write("{\n" +
+                "\t\"data\": {\n" +
+                "\t\t\"token\": \"8b593d2385032asdfdaac98ca2247294acd3d5\"\n" +
+                "\t},\n" +
+                "\t\"msg\": \"调用成功\",\n" +
+                "\t\"success\": true\n" +
+                "}");
     }
 }

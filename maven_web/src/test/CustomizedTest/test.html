@@ -1,1 +1,71 @@
 <!DOCTYPE html>
+<head>
+    <title>js调用接口</title>
+</head>
+<body id="body">
+    <script type="text/javascript">
+        //alert(111)
+        function click1(){
+            alert(111)
+            var d = document.getElementsByTagName("div")[0];
+            // alert(body)
+            d.innerHTML = "<p>这是p标签</p>";  
+        }
+    </script>
+        
+    <script>
+        var xhr = new GetXmlHttpObject(); // Http传输类初始化
+        var urlPath = "http://localhost:8080/test/hello";
+        // Http传输类
+        function GetXmlHttpObject() {
+                var xmlHttp=null;
+                try {
+                    // Firefox, Opera 8.0+, Safari
+                    console.log("XMLHttpRequest");
+                        xmlHttp=new XMLHttpRequest();
+                } catch (e) {
+                    // Internet Explorer
+                    try {
+                        console.log("Msxml2");
+                        xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        console.log("Microsoft");
+                        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                }
+                return xmlHttp;
+        }
+        // get请求
+        function get_network(){
+            var url = urlPath;
+            xhr.onreadystatechange = toGetProcess;
+            xhr.open("POST", url);
+            xhr.setRequestHeader('Content-Type','application/json');
+            xhr.send("{\"username\":\"airoucat\",\"password\":\"123\",\"hobby\":\"cpp\"}");
+            console.log("url:",url);
+        }
+        // 设置当获XHR对象获取到返回信息后执行以下代码
+        function toGetProcess() {
+            console.log("xhr:",xhr.readyState,xhr.status);
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    res = xhr.responseText;
+                    console.log("res",res);
+                    var obj = eval ("(" + res + ")");
+                    console.log("ok good");// obj为json的以下目录
+                    console.log("code:",obj.code);
+                    console.log("msg:",obj.msg);
+                }
+            } else {
+                console.log("可能存在跨域问题，解决即可");
+            }
+        }
+    </script>
+
+    <div>
+        <input id="input1" type="text"><br>
+        <button onclick="click1()">生成</button><br>
+        <button onclick="get_network()">POST</button>
+    </div>
+    
+</body>

@@ -107,8 +107,41 @@ System.out.println("用户名： " + username);
 System.out.println("密码： " + password);
 System.out.println("兴趣爱好： " + Arrays.asList(hobby));
 ```
-<br><br><br><br><br><br><br><br>
+#### JS 创建元素的三种方法
+1、动态创建元素一 document.write()
 
+例如向页面中输出一个 li 标签
+```html
+<pre class="html" name="code"><span style="font-size:12px;"><script>
+  document.write("<li>123</li>");
+</script></span>
+```
+body标签中就会插入但是这种方法几乎不用，因为这回影响页面的布局，甚至会将页面原来的内容冲刷掉，从而只显示输出内容
 
+2、动态创建元素二 innerHTML
 
+```html
+<span style="font-size:12px;"><body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  box.innerHTML = "<p>这是p标签</p>";
+</script>
+</body></span>
+```
+div标签中就会插入一个p标签，并在在页面上输出“这是标签”，当需要添加的标签比较多的时候使用这种方式。
 
+3、动态创建元素三 document.createElement()
+
+```html
+<span style="font-size:12px;"><body>
+<div id="div"></div>
+<script>
+  var divobj = document.getElementById("div"); var li = document.createElement("li"); //创建一个li标签 li.innerHTML = "123"; //给li标签赋值
+divobj.appendChild(li); //将创建好的li标签追加到box标签中 </script> </body></span>
+```
+div标签下面就会创建了一个li标签，当需要动态创建的标签比较少的时候就使用这种方式
+
+#### servlet相关
+    /如果被浏览器解析，得到的地址是http://ip:port/
+    /如果被服务器解析，得到的地址是http://ip:port/工程路径/ web.xml中的url-pattern标签中的/

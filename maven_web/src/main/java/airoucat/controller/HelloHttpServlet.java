@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.Arrays;
 
 import airoucat.model.dataUtil;
+import net.sf.json.JSONObject;
 
 public class HelloHttpServlet extends HttpServlet {
     @Override
@@ -47,15 +48,19 @@ public class HelloHttpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("POST请求收到了");
-        System.out.println(req.toString());
         InputStream is = req.getInputStream();
         //构造一个字符流缓存
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String str = "",result="";
+        String str = "",reqjson="";
         while ((str = br.readLine()) != null){
-            result += str;
+            reqjson += str;
         }
-        System.out.println(result);
+        JSONObject jsonObject = JSONObject.fromObject(reqjson);
+        String username=jsonObject.getString("username");
+        //数据库比对
+        req.setAttribute("requestTime", dataUtil.getSysdateStr(""));
+        req.getRequestDispatcher("/hello/generateTheToken").forward(req, resp);
+
     }
 
     private boolean verifyTheuUser(String username,String password){

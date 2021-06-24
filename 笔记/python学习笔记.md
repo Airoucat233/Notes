@@ -144,10 +144,15 @@ print "var2[1:5]: ", var2[1:5]
 var1[0]:  H
 var2[1:5]:  ytho
 ```
+
+### os
+
 ```python
-os.path.split()#返回文件的路径和文件名
-os.path.splitext()#返回文件名和拓展名
+os.path.split()#返回文件的路径和文件名 (路径/ , 文件名.py)
+os.path.splitext()#返回文件名和拓展名 (路径/文件名 , '.py')
 ```
+获取用户名
+os.environ['USERNAME']
 
 ### 时间日期相关
 
@@ -221,14 +226,33 @@ conn.close()
 ```python
 pd.DataFrame(columns=['第一列','第二列','第三列'],index=[1,2,3],data={'第一列':[4,5,6],'第二列':3})
 #输出
-第一列  第二列  第三列
-1    4    3  NaN
-2    5    3  NaN
-3    6    3  NaN
+  第一列  第二列  第三列
+1    4    3     NaN
+2    5    3     NaN
+3    6    3     NaN
 ```
 #### [pandas dataframe的合并（append, merge, concat）](https://www.cnblogs.com/guxh/p/9451532.html)
-#### 
-#### pandas.read_csv()参数
+#### DataFrame读写函数参数
+- ##### pandas.read_csv()参数
+      sep='\t' 读取以制表符分隔的表格
+      sep='\s+'等效于delim_whitespace=true 任何空白字符做分隔符
+- ##### pandas.read_html()参数
+      header=0 表示第0行作为表头
+
+#### 查看/转换DataFrame数据类型
+```python
+#查看各列数据类型
+df.dtypes
+#查看A列数据类型
+df[A].dtypes
+df.dtypes[A]
+#转换DataFrame的数据类型
+df[A].astypes(int)#将A列数据类型转换为int
+将'含税金额'列转换为str,再作替换，返回一个series,再转换为float
+df['含税金额']=df['含税金额'].astype(str).str.replace(',','').astype(float)
+```
+#### DataFrame获得某一列中所有的不重复的值
+`dataframe['xxx'].unique()`
 
 ### ElementTree XML API
 ```python
@@ -242,13 +266,18 @@ rows = root.findall('.//{urn:schemas-microsoft-com:office:spreadsheet}Row')
 
 ### selenium
 
+#### 直接获取html文本内容
+```python
+driver.find_element(By.XPATH.'path').get_attribute('innerHTML')
+```
+#### 设置网站加载超时
+`self.driver.set_page_load_timeout(10)`<br>
 [Python selenium等待](https://blog.csdn.net/huilan_same/article/details/52544521)
-
 [selenium：css_selector定位详解（css selector和xpath的比较）](https://www.cnblogs.com/haifeima/p/10138154.html)
-
 [selenium webdriver by xpath 定位元素](https://blog.csdn.net/xiaosongbk/article/details/53188355)
-#### selenium报错：This version of ChromeDriver only supports Chrome version 76
 
+
+#### selenium报错：This version of ChromeDriver only supports Chrome version 76
 >将对应版本的ChromeDriver放入浏览器目录和Python目录
 
 #### iframe标签处理
@@ -275,8 +304,8 @@ iframe结构和细节
 ```python
 切换iframe  XPath（Python示例代码）：
  WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,"//iframe[@id='ptifrmtgtframe' and @name='TargetContent']")))
- ```
- ```c# 
+```
+```c# 
 切换iframe  CssSelector（C＃示例代码）：
  new WebDriverWait(driver, TimeSpan.FromSeconds(20)).Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.CssSelector("iframe#twitter-widget-0"))); 
 ```
