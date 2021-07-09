@@ -1,4 +1,4 @@
-package com.airoucat.test;
+package com.airoucat.test.testInherited;
 
 /**
  * 父类标注自定义注解

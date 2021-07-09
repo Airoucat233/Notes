@@ -44,6 +44,29 @@ a=lambda x,y:x+y
 ```
 #### [可迭代对象详解](https://www.cnblogs.com/new-rain/p/9991932.html)
 
+
+#### with工作原理
+```python
+class Sample:
+    def __enter__(self):
+        print "in __enter__"
+        return "Foo"
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print "in __exit__"
+def get_sample():
+    return Sample()
+with get_sample() as sample:
+    print "Sample: ", sample
+
+"""
+输出
+in __enter__
+Sample:  Foo
+in __exit__
+"""
+```
+[with工作原理详解](https://blog.csdn.net/u012609509/article/details/72911564)
+
 #### Python中单下划线、双下划线、头尾双下划线说明：
 
 `__foo__`: 定义的是特殊方法，一般是系统定义名字 ，类似`__init__()` 之类的。
@@ -230,6 +253,13 @@ pd.DataFrame(columns=['第一列','第二列','第三列'],index=[1,2,3],data={'
 1    4    3     NaN
 2    5    3     NaN
 3    6    3     NaN
+
+pd.DataFrame(columns=['第一列','第二列','第三列'],index=[1,2,3],data=[(1,1,1),(2,2,3),(3,3,3)])
+#输出
+   第一列  第二列  第三列
+1    1    1    1
+2    2    2    3
+3    3    3    3
 ```
 #### [pandas dataframe的合并（append, merge, concat）](https://www.cnblogs.com/guxh/p/9451532.html)
 #### DataFrame读写函数参数

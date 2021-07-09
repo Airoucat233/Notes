@@ -1,5 +1,6 @@
 package com.airoucat.hello;
 import com.sun.deploy.util.StringUtils;
+import sun.font.TrueTypeFont;
 
 import java.time.temporal.Temporal;
 import java.util.*;
@@ -157,6 +158,96 @@ public class Solution {
         String result = temresult.substring(0,1).toUpperCase()+temresult.substring(1).toLowerCase();
         System.out.println(result);
         return result;
+    }
+    /*520. 检测大写字母
+    给定一个单词，你需要判断单词的大写使用是否正确。
+
+    我们定义，在以下情况时，单词的大写用法是正确的：
+
+    全部字母都是大写，比如"USA"。
+    单词中所有字母都不是大写，比如"leetcode"。
+    如果单词不只含有一个字母，只有首字母大写， 比如 "Google"。
+    否则，我们定义这个单词没有正确使用大写字母。
+
+    示例 1:
+
+    输入: "USA"
+    输出: True
+    示例 2:
+
+    输入: "FlaG"
+    输出: False
+    注意: 输入是由大写和小写拉丁字母组成的非空单词。*/
+    public boolean detectCapitalUse(String word) {
+        int num = 0;
+        for(int i=0;i<word.length();i++){
+            if(word.charAt(i)<=90&&word.charAt(i)>=65){
+                num++;
+            }
+        }
+        if(num==word.length()||(num==1&&word.charAt(0)<=90&&word.charAt(0)>=65||num==0))
+            return true;
+        else
+            return false;
+    }
+    /*41. 缺失的第一个正数
+    给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
+
+    请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。
+
+
+    示例 1：
+
+    输入：nums = [1,2,0]
+    输出：3
+    示例 2：
+
+    输入：nums = [3,4,-1,1]
+    输出：2
+    示例 3：
+
+    输入：nums = [7,8,9,11,12]
+    输出：1*/
+    public int firstMissingPositive(int[] nums) {
+        boolean change = true;
+        while(change==true){
+            change=false;
+            for(int i = 0;i<nums.length-1;i++){
+                if(nums[i]>nums[i+1]){
+                    int temp = nums[i+1];
+                    nums[i+1]=nums[i];
+                    nums[i]=temp;
+                    change = true;
+                }
+            }
+        }
+        int[] newnums=new int[nums.length];
+        int j=0;
+        for(int i : nums) {
+            if (i > 0){
+                newnums[j] = i;
+                j++;
+            }
+        }
+        int k=1;
+//        for(int i=0;i<newnums.length;i++){
+//            if(k==newnums[i]){
+//            }
+//            else if(i!=0&&newnums[i]-k==1){k++;}
+//            else if(i!=0)return k+1;
+//            else return k;
+//        }
+//        return k+1;
+        for(int i=0;i<newnums.length;i++){
+            if(k==newnums[i]){
+            }
+            else if(i!=0){
+                if(newnums[i]-k==1){k++;}
+                else return k+1;
+            }
+            else return k;
+        }
+        return k+1;
     }
 }
 

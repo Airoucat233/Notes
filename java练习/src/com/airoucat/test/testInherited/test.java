@@ -1,4 +1,4 @@
-package com.airoucat.test;
+package com.airoucat.test.testInherited;
 
 /**
  * 测试子类获取父类自定义注解

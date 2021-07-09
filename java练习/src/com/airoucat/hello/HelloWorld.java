@@ -15,10 +15,12 @@ public class HelloWorld {
 //        String s = new Solution().arrangeWords("Keep calm and code on");
 //        System.out.println(s);
         //Class<?> a = String.class;
-        Class[] interfaces = {String.class,int.class,boolean.class};
-        for(Class c:interfaces) {
-            System.out.println(c);
-        }
+//        Class[] interfaces = {String.class,int.class,boolean.class};
+//        for(Class c:interfaces) {
+//            System.out.println(c);
+//        }
+        int[] nums = {1,2,6};
+        System.out.println(new Solution().firstMissingPositive(nums));
     }
 //public static void main(String[] args) {
 //    System.out.println("111");

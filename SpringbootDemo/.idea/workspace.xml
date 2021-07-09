@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="16dbbb4b-2994-4300-814a-c52c39823297" name="默认变更列表" comment="">
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testInherited/Father.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testInherited/MyAnnotation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testInherited/Son.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testInherited/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testParamConfig/BankService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testParamConfig/BankTransferMoney.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testRepeatable/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testRepeatable/People.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java练习/src/com/airoucat/test/testRepeatable/PlayGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/airoucat/SpringbootDemo/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/airoucat/SpringbootDemo/SpringbootDemoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/airoucat/SpringbootDemo/SpringbootDemoApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../笔记/python学习笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../笔记/python学习笔记.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../笔记/其他笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../笔记/其他笔记.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1uFm6jZCRhvWKqzVCWkWV46hKMW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SpringbootDemo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.airoucat.SpringbootDemo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.SpringbootDemoApplicationTests">
+    <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="运行单个请求">
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringbootDemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringbootDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.airoucat.SpringbootDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.airoucat.SpringbootDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.airoucat.SpringbootDemo.SpringbootDemoApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="SpringbootDemo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.airoucat.SpringbootDemo.SpringbootDemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SpringbootDemoApplicationTests" />
+        <item itemvalue="HTTP 请求.generated-requests#1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="16dbbb4b-2994-4300-814a-c52c39823297" name="默认变更列表" comment="" />
+      <created>1624269540816</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624269540816</updated>
+      <workItem from="1624269542006" duration="4923000" />
+      <workItem from="1624439286497" duration="1614000" />
+      <workItem from="1624611649134" duration="357000" />
+      <workItem from="1624866313309" duration="46000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
