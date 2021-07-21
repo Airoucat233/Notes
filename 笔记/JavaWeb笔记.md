@@ -53,6 +53,8 @@
             └── test-db.xml
 ```
 
+#### 框架=注解+设计模式+反射
+
 #### Tomcat和JDK版本对应关系
 ![图片源不存在](https://images2017.cnblogs.com/blog/1116722/201708/1116722-20170831115152874-1854282450.png)
 
@@ -107,6 +109,11 @@ System.out.println("用户名： " + username);
 System.out.println("密码： " + password);
 System.out.println("兴趣爱好： " + Arrays.asList(hobby));
 ```
+
+
+#### HTML加载顺序
+1. head -> body
+2. 如果有<script type="text/javascript">... </script>时,同样也是从上到下加载，但是分两种情况,当需要用到document(DOM对象)来获取body体中的数据时，document 获取body中的数据只能在方法体中，和window.onload() 加载体里，中获取，在别的地方获取不到。因为按照执行顺序还没加载到，就要去获取肯定是获取不到的
 #### JS 创建元素的三种方法
 1、动态创建元素一 document.write()
 
@@ -142,6 +149,17 @@ divobj.appendChild(li); //将创建好的li标签追加到box标签中 </script>
 ```
 div标签下面就会创建了一个li标签，当需要动态创建的标签比较少的时候就使用这种方式
 
+#### JS中property和attribute区别
+  property是DOM中的属性，是JavaScript里的对象；
+  attribute是HTML标签上的特性，它的值只能够是字符串；
+  **attributes是属于property的一个子集**
+  Attribute就是dom节点自带的属性，例如html中常用的id、class、title、align等。
+  而Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild等。
+  property能够从attribute中得到同步；
+  attribute不会同步property上的值；
+  attribute和property之间的数据绑定是单向的，attribute->property；
+  更改property和attribute上的任意值，都会将更新反映到HTML页面中；
+
 #### servlet相关
     /如果被浏览器解析，得到的地址是http://ip:port/
     /如果被服务器解析，得到的地址是http://ip:port/工程路径/ web.xml中的url-pattern标签中的/
@@ -162,3 +180,8 @@ jsp由这些页面元素组成：
 <jsp:include page="Filename" > 在jsp页面中包含另一个页面。在包含的章节有详细的讲解
 7. 注释 <%-- -- %>
 不同于 html的注释 <!-- --> 通过jsp的注释，浏览器也看不到相应的代码，相当于在servlet中注释掉了
+
+#### Vue相关
+##### v-bind和v-model区别
+    v-bind用于绑定属性和数据 ，其缩写为“ : ” 也就是v-bind:id  === :id  
+    v-model用在表单控件上的，用于实现双向数据绑定，所以如果你用在除了表单控件以外的标签是没有任何效果的。

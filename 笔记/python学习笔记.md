@@ -9,7 +9,15 @@ v：variable变量<br/>
 p：parameter参数<br/>
 
 #### 参数类型提示
+- type hints 主要是要指示函数的输入和输出的数据类型，数据类型在typing 包中，基本类型有str list dict等等
+- **Union** 是当有多种可能的数据类型时使用，比如函数有可能根据不同情况有时返回str或返回list，那么就可以写成Union[list, str]
+- **Optional** 是Union的一个简化， 当 数据类型中有可能是None时，比如有可能是str也有可能是None，则Optional[str], 相当于Union[str, None] (这里的None不是默认参数，默认参数由'='符号指定)
+- **Sequence**序列类型，三种基本的Sequence Type是list（表），tuple（定值表，或翻译为元组），range（范围），Sequence[int]表示一个int的序列
 ```python
+原始：def func(args = None):
+错：def func(args:Optional[str]) -> None:
+对：def func(args:Optional[str] = None) -> None:
+
 def f(a: {int, float}):
     pass
 #a是一个 具有int和float类型属性 的对象
@@ -350,6 +358,16 @@ iframe结构和细节
 2. 缩放截取到的页面图片，即将截图的size缩放为宽和高都除以缩放比例后的大小；
 3. 修改Image.crop的参数，将参数元组的四个值都乘以缩放比例。
 
+#### 切换窗口
+```python
+main_window=driver.current_window_handle#保存当前窗口
+for window in driver.window_handles:
+    driver.switch_to.window(window)
+    if driver.title == '业务查询':
+        #在该窗口下做一些事
+        driver.close()#关闭窗口
+    river.switch_to.window(main_window)#切换为前窗口
+```
 ### pyautogui
 #### [更多操作](https://www.jb51.net/article/183926.htm)
 #### 基本操作

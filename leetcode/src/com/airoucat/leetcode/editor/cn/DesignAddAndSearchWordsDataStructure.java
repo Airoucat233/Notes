@@ -50,7 +50,7 @@ package com.airoucat.leetcode.editor.cn;
 //Java：添加与搜索单词 - 数据结构设计
 public class DesignAddAndSearchWordsDataStructure{
     public static void main(String[] args) {
-        Solution solution = new DesignAddAndSearchWordsDataStructure().new Solution();
+        WordDictionary solution = new DesignAddAndSearchWordsDataStructure().new WordDictionary();
         
     }
     
