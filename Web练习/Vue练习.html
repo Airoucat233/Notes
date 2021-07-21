@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue-test</title>
+        <script src="./vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+        <!-- Vue3<script src="https://unpkg.com/vue@next"></script> -->    
+      </head>
+    <body>
+      <div id='app'>
+        <p>{{gareen.name}}</p>
+        <p>{{gareen.hp}}</p>
+        <product c-name='111' age=18 sale-num='10'></product>
+        <product c-name='nick' age='21' sale-num=20></product>
+        <product v-bind:c-name='customName' v-bind:age='customAge' sale-num=1></product>
+        <br>
+        <input v-model='customName'>
+        <div >{{customName}}</div>
+      </div>
+      <script type="text/javascript">
+        //准备数据
+        var gareen = {"name":"盖伦","hp":616};
+        //通过vue.js 把数据和对应的视图关联起来
+        new Vue(
+          {
+              el: '#app',
+              data: {
+                gareen,
+                customName:'hehe',
+                customAge:'18'
+              },
+              components:{
+                'product':{
+                  data:function(){
+                    return {sale2:0}
+                  },
+                  props:['cName','age','saleNum'],
+                  template:'<div class="product" v-on:click="increaseSale">姓名:{{cName}} 年龄：{{age}} 销量：{{saleNum}} 销量2：{{sale2}}</div>',
+                  methods:{
+                    increaseSale:function(){
+                      this.saleNum++
+                      this.sale2++
+                    }
+                  }
+                }
+              }
+          }
+      )
+    </script>
+    </body>
+</html>
