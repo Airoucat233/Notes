@@ -196,7 +196,7 @@ os.environ['USERNAME']
 %H 24小时制小时数（0-23）
 %I 12小时制小时数（01-12）
 %M 分钟数（00=59）
-%S 秒（00-59）%f带小数的秒
+%S 秒（00-59） %S.%f带小数的秒
 %a 本地简化星期名称
 %A 本地完整星期名称
 %b 本地简化的月份名称
@@ -269,6 +269,11 @@ pd.DataFrame(columns=['第一列','第二列','第三列'],index=[1,2,3],data=[(
 2    2    2    3
 3    3    3    3
 ```
+
+#### A value is trying to be set on a copy of a slice from a DataFrame
+```python
+data.loc[data.bidder == 'parakeet2004', 'bidderrate'] = 100
+```
 #### [pandas dataframe的合并（append, merge, concat）](https://www.cnblogs.com/guxh/p/9451532.html)
 #### DataFrame读写函数参数
 - ##### pandas.read_csv()参数
@@ -307,6 +312,8 @@ rows = root.findall('.//{urn:schemas-microsoft-com:office:spreadsheet}Row')
 #### 直接获取html文本内容
 ```python
 driver.find_element(By.XPATH.'path').get_attribute('innerHTML')
+#根据标签内容来定位
+.//div[contains(text(),'内容')]
 ```
 #### 设置网站加载超时
 `self.driver.set_page_load_timeout(10)`<br>
@@ -367,6 +374,12 @@ for window in driver.window_handles:
         #在该窗口下做一些事
         driver.close()#关闭窗口
     river.switch_to.window(main_window)#切换为前窗口
+```
+
+#### selenium执行js代码中arguments[0]理解
+```python
+#arguments是从Python传递到要执行的JavaScript的内容，arguments[0]，arguments[1]可以理解为占位符
+driver.execute_script("arguments[0].removeAttribute(arguments[1])", element, "style")
 ```
 ### pyautogui
 #### [更多操作](https://www.jb51.net/article/183926.htm)

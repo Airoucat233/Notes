@@ -3,6 +3,7 @@
     <head>
         <title>vue-test</title>
         <script src="./vue.js"></script>
+        <script src="./axios.min.js"></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
         <!-- Vue3<script src="https://unpkg.com/vue@next"></script> -->    
       </head>
@@ -16,6 +17,7 @@
         <br>
         <input v-model='customName'>
         <div >{{customName}}</div>
+        <p>{{message}}</p>
       </div>
       <script type="text/javascript">
         //准备数据
@@ -27,7 +29,8 @@
               data: {
                 gareen,
                 customName:'hehe',
-                customAge:'18'
+                customAge:'18',
+                message:''
               },
               components:{
                 'product':{
@@ -35,12 +38,19 @@
                     return {sale2:0}
                   },
                   props:['cName','age','saleNum'],
-                  template:'<div class="product" v-on:click="increaseSale">姓名:{{cName}} 年龄：{{age}} 销量：{{saleNum}} 销量2：{{sale2}}</div>',
+                  template:'<div class="product" v-on:click="useData">姓名:{{cName}} 年龄：{{age}} 销量：{{saleNum}} 销量2：{{sale2}}</div>',
                   methods:{
                     increaseSale:function(){
                       this.saleNum++
                       this.sale2++
-                    }
+                    },
+                    useData: function (){
+                      var that = this
+                      // eslint-disable-next-line no-undef
+                      that.$axios.get("http://localhost:8088/user/getList").then(response => {
+                          that.message = response.data
+               })
+            }
                   }
                 }
               }

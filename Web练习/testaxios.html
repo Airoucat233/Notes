@@ -3,7 +3,7 @@
     <head>
         <title>vue-test</title>
         <script src="./vue.js"></script>
-        <script src="./axios.min.js"></script>
+        <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
   
 <input type="text" id="hero" value="555">
 <div>2334</div>
@@ -11,7 +11,7 @@
 <script>
     var a = document.getElementById('hero')
     alert(a.value)
-    var url = "http://127.0.0.1:8088/user/getList"
+    var url = "http://localhost:8088/user/getList"
     axios.get(url).then(function(response) {
         a.value = "通过 axios 获取到的json数据：";
     })
